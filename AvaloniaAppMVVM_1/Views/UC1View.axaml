@@ -36,7 +36,6 @@
             CanUserSortColumns="False"
             GridLinesVisibility="All"
             IsReadOnly="True"
-			x:Name="DGCompany"
             ItemsSource="{Binding Companies}">
 			
             <DataGrid.Columns>
