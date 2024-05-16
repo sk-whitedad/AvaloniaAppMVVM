@@ -1,0 +1,50 @@
+<Window
+    x:Class="AvaloniaAppMVVM_1.Views.MainWindow"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    
+    xmlns:vm="using:AvaloniaAppMVVM_1.ViewModels"
+	x:DataType="vm:MainWindowViewModel"
+	Title="MyNoNameApp"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+	<Design.DataContext>
+		<vm:MainWindowViewModel />
+	</Design.DataContext>
+
+    <Grid RowDefinitions="Auto, *, 20">
+		<Grid Grid.Row="0" ColumnDefinitions="1*, 1*, 1*, 1*, 1*" >
+			<Button Grid.Column="0" Command="{Binding Command1}" Content="Организации" Classes="btn" />
+			<Button Grid.Column="1" Command="{Binding Command2}" Content="Посетители"  Classes="btn" />
+			<Button Grid.Column="2" Command="{Binding Command3}" Content="Автомобили" Classes="btn" />
+			<Button Grid.Column="3" Command="{Binding Command4}" Content="Сопроводение" Classes="btn" />
+			<Button Grid.Column="4" Command="{Binding Command4}" Content="Настройки" Classes="btn" />
+		</Grid>
+
+		<TransitioningContentControl Grid.Row="1" Content="{Binding CurrentPage}" />
+ 
+        <StackPanel Grid.Row="2" Classes="pnl" VerticalAlignment="Stretch">
+            <Grid ColumnDefinitions="Auto, *">
+                <TextBlock
+                   Grid.Column="0"
+ 					VerticalAlignment="Center"
+                    HorizontalAlignment="Stretch"
+					FontSize="16"
+                    Text="Status:" />
+				<TextBlock
+                   Grid.Column="1"
+ 					VerticalAlignment="Center"
+                    HorizontalAlignment="Stretch"
+					FontSize="16"
+                    Text="" />
+			</Grid>
+        </StackPanel>
+
+    </Grid>
+
+
+
+</Window>
