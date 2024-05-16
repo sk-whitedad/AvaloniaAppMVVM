@@ -2,10 +2,12 @@
 using AvaloniaDB.Implementation;
 using AvaloniaDB.Interfaces;
 using AvaloniaDB.Models;
+using Microsoft.EntityFrameworkCore.Metadata;
 using ReactiveUI;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,9 +19,9 @@ namespace AvaloniaAppMVVM_1.ViewModels
     {
         public ICommand AddCompany { get; }
         public ICommand RemoveCompany { get; }
-        
+        public int SelectedInd { get; set; }
+        public Company SelectedItm {  get; set; }
         public ObservableCollection<Company> Companies { get; set; }
-        public ObservableCollection<Company> Companies1 { get; set; }
         private ApplicationDbContext _contextDB { get; }
         private IBaseRepository<Company> _companyRepository {  get; }
         private ICompanyService _companyService {  get; }
@@ -27,6 +29,7 @@ namespace AvaloniaAppMVVM_1.ViewModels
         {
             AddCompany = ReactiveCommand.Create(ButtonAddCompany);
             RemoveCompany = ReactiveCommand.Create(ButtonRemoveCompany);
+            
             _contextDB = contextDB;
             _companyRepository = companyRepository;
             _companyService = companyService;
@@ -51,17 +54,12 @@ namespace AvaloniaAppMVVM_1.ViewModels
             }
         }
 
-        private void ButtonRemoveCompany()
+        private async Task ButtonRemoveCompany()
         {
+            await _companyService.Delete(SelectedItm.Id);
+            Companies.RemoveAt(SelectedInd);
 
-            //var response = _companyService.Delete();
-
-            if (response.Result.StatusCode == AvaloniaDB.Enums.StatusCode.OK)
-            {
-
-
-
-            }
+           
         }
 
         public override bool CanNavigateNext

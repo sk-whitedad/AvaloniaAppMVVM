@@ -33,6 +33,8 @@
             CanUserSortColumns="False"
             GridLinesVisibility="All"
             IsReadOnly="True"
+			SelectedIndex="{Binding SelectedInd, Mode=TwoWay}"
+			SelectedItem="{Binding SelectedItm, Mode=TwoWay}"
             ItemsSource="{Binding Companies}">
 			
             <DataGrid.Columns>
