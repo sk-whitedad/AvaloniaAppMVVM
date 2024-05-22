@@ -15,36 +15,40 @@
 		<vm:MainWindowViewModel />
 	</Design.DataContext>
 
-    <Grid RowDefinitions="Auto, *, 20">
+    <Grid RowDefinitions="Auto, *, 30">
 		<Grid Grid.Row="0" ColumnDefinitions="1*, 1*, 1*, 1*, 1*" >
 			<Button Grid.Column="0" Command="{Binding Command1}" Content="Организации" Classes="btn" />
 			<Button Grid.Column="1" Command="{Binding Command2}" Content="Посетители"  Classes="btn" />
 			<Button Grid.Column="2" Command="{Binding Command3}" Content="Автомобили" Classes="btn" />
-			<Button Grid.Column="3" Command="{Binding Command4}" Content="Сопроводение" Classes="btn" />
-			<Button Grid.Column="4" Command="{Binding Command4}" Content="Настройки" Classes="btn" />
+			<Button Grid.Column="3" Command="{Binding Command4}" Content="Сопровождение" Classes="btn" />
+			<Button Grid.Column="4" Command="{Binding Command5}" Content="Настройки" Classes="btn" />
 		</Grid>
 
 		<TransitioningContentControl Grid.Row="1" Content="{Binding CurrentPage}" />
  
         <StackPanel Grid.Row="2" Classes="pnl" VerticalAlignment="Stretch">
-            <Grid ColumnDefinitions="Auto, *">
+            <Grid ColumnDefinitions="100, *, 150">
                 <TextBlock
-                   Grid.Column="0"
+                    Grid.Column="0"
  					VerticalAlignment="Center"
                     HorizontalAlignment="Stretch"
 					FontSize="16"
-                    Text="Status:" />
+                    Text="Статус:" />
 				<TextBlock
                    Grid.Column="1"
  					VerticalAlignment="Center"
                     HorizontalAlignment="Stretch"
 					FontSize="16"
                     Text="" />
+				<TextBox
+					Grid.Column="2"
+					VerticalAlignment="Center"
+                    HorizontalAlignment="Stretch"
+					FontSize="16"
+					Foreground="Black"
+					Text="{Binding MessageInputTxt}"/>
+
 			</Grid>
         </StackPanel>
-
     </Grid>
-
-
-
 </Window>

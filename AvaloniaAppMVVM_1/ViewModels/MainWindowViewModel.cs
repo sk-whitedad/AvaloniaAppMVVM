@@ -3,8 +3,10 @@ using AvaloniaDB.Implementation;
 using AvaloniaDB.Interfaces;
 using AvaloniaDB.Models;
 using ReactiveUI;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Reactive;
 using System.Windows.Input;
 
 namespace AvaloniaAppMVVM_1.ViewModels
@@ -16,14 +18,32 @@ namespace AvaloniaAppMVVM_1.ViewModels
         public ICommand Command3 { get; }
         public ICommand Command4 { get; }
 
+        //Пример 
+        private string _messageInputTxt = string.Empty;
+        public string MessageInputTxt
+        {
+            get { return _messageInputTxt; }
+            set { this.RaiseAndSetIfChanged(ref _messageInputTxt, value); }
+        }
+        public ReactiveCommand<Unit, Unit> Command5 { get; }
+        //Конец Пример 
 
         public ApplicationDbContext contextDB {  get; }
+        
         public MainWindowViewModel()
         {
             Command1 = ReactiveCommand.Create(ButtonComand1);
             Command2 = ReactiveCommand.Create(ButtonComand2);
             Command3 = ReactiveCommand.Create(ButtonComand3);
             Command4 = ReactiveCommand.Create(ButtonComand4);
+            IObservable<bool> isInputValid = this.WhenAnyValue(
+                x => x.MessageInputTxt,
+                x => !string.IsNullOrWhiteSpace(x) && x.Length > 7
+                ); 
+            Command5 = ReactiveCommand.Create(ButtonComand5, isInputValid);
+
+
+
 
             contextDB = new ApplicationDbContext();
         }
@@ -62,6 +82,12 @@ namespace AvaloniaAppMVVM_1.ViewModels
 
         private void ButtonComand4()
         {
+            CurrentPage = new UC2ViewModel();
+        }
+
+        private void ButtonComand5()
+        {
+            Debug.WriteLine("-----The submit command was run.-----");
             CurrentPage = new UC2ViewModel();
         }
     }

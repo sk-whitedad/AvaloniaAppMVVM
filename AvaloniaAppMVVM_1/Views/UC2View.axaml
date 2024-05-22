@@ -14,10 +14,15 @@
 	</Design.DataContext>
 
 	<Grid Classes="Body" ColumnDefinitions="1*, 3*">
-		<TreeView
-            Grid.Column="0"
-            Margin="10"
-            BorderBrush="White" />
+		<Grid Grid.Column="0" RowDefinitions="1*, 2*">
+			<StackPanel Margin="0,10,0,0" Orientation="Vertical" Grid.Row="0">
+				<Button Command="{Binding AddVisitor}" Content="Добавить" Classes="btn btn1"/>
+				<Button Content="Править" Classes="btn btn1"/>
+				<Button Content="Удалить" Classes="btn btn1"/>
+				<Button Content="Инфо" Classes="btn btn1"/>
+			</StackPanel>
+
+		</Grid>
 
 		<DataGrid
             Grid.Column="1"

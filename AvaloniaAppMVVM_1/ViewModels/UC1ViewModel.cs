@@ -1,4 +1,5 @@
-﻿using AvaloniaDB;
+﻿using AvaloniaAppMVVM_1.Views;
+using AvaloniaDB;
 using AvaloniaDB.Implementation;
 using AvaloniaDB.Interfaces;
 using AvaloniaDB.Models;
@@ -9,6 +10,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
+using System.Reactive.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -19,17 +21,23 @@ namespace AvaloniaAppMVVM_1.ViewModels
     {
         public ICommand AddCompany { get; }
         public ICommand RemoveCompany { get; }
+        public ICommand EditCompany { get; }
+
         public int SelectedInd { get; set; }
         public Company SelectedItm {  get; set; }
         public ObservableCollection<Company> Companies { get; set; }
         private ApplicationDbContext _contextDB { get; }
         private IBaseRepository<Company> _companyRepository {  get; }
         private ICompanyService _companyService {  get; }
+
+
+
+
         public UC1ViewModel(List<Company> companyList, ICompanyService companyService, IBaseRepository<Company> companyRepository, ApplicationDbContext contextDB)
         {
             AddCompany = ReactiveCommand.Create(ButtonAddCompany);
             RemoveCompany = ReactiveCommand.Create(ButtonRemoveCompany);
-            
+
             _contextDB = contextDB;
             _companyRepository = companyRepository;
             _companyService = companyService;
@@ -56,11 +64,17 @@ namespace AvaloniaAppMVVM_1.ViewModels
 
         private async Task ButtonRemoveCompany()
         {
-            await _companyService.Delete(SelectedItm.Id);
-            Companies.RemoveAt(SelectedInd);
-
-           
+            if (SelectedItm != null)
+            {
+                await _companyService.Delete(SelectedItm.Id);
+                Companies.RemoveAt(SelectedInd);
+            }
         }
+
+ 
+
+
+
 
         public override bool CanNavigateNext
         {

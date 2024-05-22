@@ -15,7 +15,7 @@
 
 	<Style Selector="Button.btn1">
 		<Setter Property="Background" Value="#969c87"/>
-		<Setter Property="CornerRadius" Value="30"/>
+		<Setter Property="CornerRadius" Value="10"/>
 		<Setter Property="Height" Value="40"/>		
 	</Style>
 
