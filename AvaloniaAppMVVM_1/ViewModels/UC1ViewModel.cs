@@ -1,34 +1,26 @@
-﻿using AvaloniaAppMVVM_1.Views;
-using AvaloniaDB;
-using AvaloniaDB.Implementation;
+﻿using AvaloniaDB;
 using AvaloniaDB.Interfaces;
 using AvaloniaDB.Models;
-using Microsoft.EntityFrameworkCore.Metadata;
 using ReactiveUI;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
-using System.Linq;
-using System.Reactive.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace AvaloniaAppMVVM_1.ViewModels
 {
-    public class UC1ViewModel: PageViewModelBase
+    public class UC1ViewModel : ViewModelBase
     {
         public ICommand AddCompany { get; }
         public ICommand RemoveCompany { get; }
         public ICommand EditCompany { get; }
 
         public int SelectedInd { get; set; }
-        public Company SelectedItm {  get; set; }
+        public Company SelectedItm { get; set; }
         public ObservableCollection<Company> Companies { get; set; }
         private ApplicationDbContext _contextDB { get; }
-        private IBaseRepository<Company> _companyRepository {  get; }
-        private ICompanyService _companyService {  get; }
+        private IBaseRepository<Company> _companyRepository { get; }
+        private ICompanyService _companyService { get; }
 
 
 
@@ -41,8 +33,6 @@ namespace AvaloniaAppMVVM_1.ViewModels
             _contextDB = contextDB;
             _companyRepository = companyRepository;
             _companyService = companyService;
-            _companyRepository = new CompanyRepository(_contextDB);
-            _companyService = new CompanyService(_companyRepository);
 
             var companies = companyList;
             Companies = new ObservableCollection<Company>(companies);
@@ -71,22 +61,9 @@ namespace AvaloniaAppMVVM_1.ViewModels
             }
         }
 
- 
 
 
 
-
-        public override bool CanNavigateNext
-        {
-            get => true;
-            protected set => throw new NotSupportedException();
-        }
-
-        public override bool CanNavigatePrevious
-        {
-            get => false;
-            protected set => throw new NotSupportedException();
-        }
 
 
     }

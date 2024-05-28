@@ -4,9 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AvaloniaAppMVVM_1.ViewModels
+namespace AvaloniaAppMVVM_1.ViewModels.Visitor
 {
-    public class VisitorViewModel
+    public class AddVisitorWindowViewModel : ViewModelBase
     {
+
+
+
+
     }
 }

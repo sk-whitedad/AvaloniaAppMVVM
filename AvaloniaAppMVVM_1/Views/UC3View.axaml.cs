@@ -2,9 +2,9 @@ using Avalonia.Controls;
 
 namespace AvaloniaAppMVVM_1.Views
 {
-    public partial class VisitorAddWindow : Window
+    public partial class UC3View : UserControl
     {
-        public VisitorAddWindow()
+        public UC3View()
         {
             InitializeComponent();
         }

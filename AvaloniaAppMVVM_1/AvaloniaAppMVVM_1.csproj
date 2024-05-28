@@ -11,6 +11,8 @@
   <ItemGroup>
     <Folder Include="Models\" />
     <AvaloniaResource Include="Assets\**" />
+    <Folder Include="ViewModels\Company\" />
+    <Folder Include="Views\Company\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -68,11 +70,21 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Views\MainWindowView.axaml.cs">
+      <DependentUpon>MainWindowView.axaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\UC1View.axaml.cs">
       <DependentUpon>UC1View.axaml</DependentUpon>
     </Compile>
 	  <Compile Update="Views\UC2View.axaml.cs">
 		  <DependentUpon>UC2View.axaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Views\Visitor\AddVisitorWindowView.axaml.cs">
+	    <DependentUpon>AddVisitorWindowView.axaml</DependentUpon>
+	  </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\UC3View.axaml" />
   </ItemGroup>
 </Project>
