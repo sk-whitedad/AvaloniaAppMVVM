@@ -82,6 +82,9 @@
 	  <Compile Update="Views\Visitor\AddVisitorWindowView.axaml.cs">
 	    <DependentUpon>AddVisitorWindowView.axaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Views\Visitor\UCAddVisitorView.axaml.cs">
+	    <DependentUpon>UCAddVisitorView.axaml</DependentUpon>
+	  </Compile>
   </ItemGroup>
 
   <ItemGroup>

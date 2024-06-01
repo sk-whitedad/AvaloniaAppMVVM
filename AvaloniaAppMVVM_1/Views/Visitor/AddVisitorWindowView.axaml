@@ -2,10 +2,15 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:views="clr-namespace:AvaloniaAppMVVM_1.Views.Visitor"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="AvaloniaAppMVVM_1.Views.Visitor.AddVisitorWindowView"
 		xmlns:vm="using:AvaloniaAppMVVM_1.ViewModels.Visitor"
         x:DataType="vm:AddVisitorWindowViewModel"
-        Title="AddVisitorWindow">
-  Добавление посетителя
+        Title="AddVisitorWindow"
+		WindowStartupLocation="CenterOwner">
+
+	<Panel>
+		<views:UCAddVisitorView/>
+	</Panel>
 </Window>
