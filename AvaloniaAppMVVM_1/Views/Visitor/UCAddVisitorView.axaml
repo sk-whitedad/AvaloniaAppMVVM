@@ -2,18 +2,62 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="AvaloniaAppMVVM_1.Views.Visitor.UCAddVisitorView">
+             mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="650"
+             x:Class="AvaloniaAppMVVM_1.Views.Visitor.UCAddVisitorView"
+			 >
 
-	<DockPanel>
-		<StackPanel DockPanel.Dock="Top">
-			<TextBox Watermark="Search for Albums...." />
-			<ProgressBar IsIndeterminate="True"  />
+	<Grid RowDefinitions="20,*,Auto" Margin="0,0,0,10">
+		<ProgressBar Grid.Row="0" IsIndeterminate="True" />
+
+		<Grid Grid.Row="1" 
+			  HorizontalAlignment="Center" 
+			  Margin="10,0,10,10" 
+			  RowDefinitions="*">
+			
+			<StackPanel Margin="10" Grid.Column="1" Orientation="Vertical">
+				<TextBlock HorizontalAlignment="Center" Margin="0,0,0,0" Text="КАРТОЧКА ПОСЕТИТЕЛЯ"></TextBlock>
+				<TextBox Width="300" Margin="0,0,0,5" Watermark="Фамилия"/>
+				<TextBox Width="300" Margin="0,0,0,5" Watermark="Имя"/>
+				<TextBox Width="300" Margin="0,0,0,5" Watermark="Отчество"/>
+				<TextBlock Margin="0,10,0,0" Text="Пол:" />
+				<ComboBox Width="300" Margin="0,0,0,5">
+					<ComboBoxItem>Мужчина</ComboBoxItem>
+					<ComboBoxItem>Женщина</ComboBoxItem>
+				</ComboBox>
+				<TextBlock Margin="0,10,0,0" Text="Организация:" />
+				<ComboBox Width="300" Margin="0,0,0,5">
+					<ComboBoxItem>Text Item 1</ComboBoxItem>
+					<ComboBoxItem>Text Item 2</ComboBoxItem>
+					<ComboBoxItem>Text Item 3</ComboBoxItem>
+					<ComboBoxItem>Text Item 4</ComboBoxItem>
+					<ComboBoxItem>Text Item 5</ComboBoxItem>
+					<ComboBoxItem>Text Item 6</ComboBoxItem>
+					<ComboBoxItem>Text Item 7</ComboBoxItem>
+				</ComboBox>
+				<TextBox Width="300" Margin="0,0,0,5" Watermark="Должность"/>
+				<TextBox Width="300" Margin="0,0,0,5" Watermark="Адрес"/>
+				<TextBox Width="300" Margin="0,0,0,5" Watermark="Дата рождения"/>
+
+				<TextBox Width="300" Margin="0,15,0,5" Watermark="Серия и номер паспорта"/>
+				<TextBox Width="300" Margin="0,0,0,5" Watermark="Кем выдан"/>
+				<TextBox Width="300" Margin="0,0,0,5" Watermark="Дата выдачи"/>
+				<TextBox Width="300" Margin="0,0,0,5" Watermark="Код подразделения"/>
+
+			</StackPanel>
+		
+		
+		</Grid>
+
+		<StackPanel Grid.Row="2" HorizontalAlignment="Center" Orientation="Horizontal">
+			<Button Width="150" Height="40" Content="Сохранить"
+					HorizontalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+					CornerRadius="7"/>
+			<Button Width="150" Height="40" Content="Отменить"
+					HorizontalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+					CornerRadius="7" 
+					Command="{Binding CommandCancel}"/>
 		</StackPanel>
-		<Button Content="Buy Album"
-				DockPanel.Dock="Bottom"
-				HorizontalAlignment="Center" />
-		<ListBox/>
-	</DockPanel>
+	</Grid>
+
 	
 </UserControl>

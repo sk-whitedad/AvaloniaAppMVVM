@@ -3,11 +3,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 		xmlns:views="clr-namespace:AvaloniaAppMVVM_1.Views.Visitor"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="450"
+		Width="400" Height="650"
         x:Class="AvaloniaAppMVVM_1.Views.Visitor.AddVisitorWindowView"
 		xmlns:vm="using:AvaloniaAppMVVM_1.ViewModels.Visitor"
         x:DataType="vm:AddVisitorWindowViewModel"
-        Title="AddVisitorWindow"
+        Title="Карточка"
 		WindowStartupLocation="CenterOwner">
 
 	
