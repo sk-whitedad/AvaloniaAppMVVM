@@ -10,6 +10,7 @@
         Title="AddVisitorWindow"
 		WindowStartupLocation="CenterOwner">
 
+	
 	<Panel>
 		<views:UCAddVisitorView/>
 	</Panel>
