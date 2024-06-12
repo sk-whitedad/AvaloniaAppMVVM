@@ -14,8 +14,15 @@ namespace AvaloniaAppMVVM_1.ViewModels.Visitor
     {
         public AddVisitorWindowViewModel()
         {
-            CommandCancel = ReactiveCommand.Create(() => {  });
+            AddVisitorCommand = ReactiveCommand.Create(() =>
+            {
+                visitorModel = new VisitorModel { FirstName = FirstName, LastName = LastName };
+                return visitorModel;
+            });
         }
+
+        private VisitorModel visitorModel;
+        public ReactiveCommand<Unit, VisitorModel?> AddVisitorCommand { get; }
 
         private string? _lastName;
         private string? _firstName;
@@ -93,8 +100,6 @@ namespace AvaloniaAppMVVM_1.ViewModels.Visitor
             get => _kodeSubdivision;
             set => this.RaiseAndSetIfChanged(ref _kodeSubdivision, value);
         }
-
-        public ICommand CommandCancel { get; }
 
     }
 }

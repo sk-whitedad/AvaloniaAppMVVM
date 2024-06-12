@@ -16,8 +16,8 @@
 			
 			<StackPanel Margin="10" Grid.Column="1" Orientation="Vertical">
 				<TextBlock HorizontalAlignment="Center" Margin="0,0,0,0" Text="КАРТОЧКА ПОСЕТИТЕЛЯ"></TextBlock>
-				<TextBox Width="300" Margin="0,0,0,5" Watermark="Фамилия"/>
-				<TextBox Width="300" Margin="0,0,0,5" Watermark="Имя"/>
+				<TextBox Text="{Binding LastName}" Width="300" Margin="0,0,0,5" Watermark="Фамилия"/>
+				<TextBox Text="{Binding FirstName}" Width="300" Margin="0,0,0,5" Watermark="Имя"/>
 				<TextBox Width="300" Margin="0,0,0,5" Watermark="Отчество"/>
 				<TextBlock Margin="0,10,0,0" Text="Пол:" />
 				<ComboBox Width="300" Margin="0,0,0,5">
@@ -51,11 +51,13 @@
 		<StackPanel Grid.Row="2" HorizontalAlignment="Center" Orientation="Horizontal">
 			<Button Width="150" Height="40" Content="Сохранить"
 					HorizontalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
-					CornerRadius="7"/>
+					CornerRadius="7"
+					Command="{Binding AddVisitorCommand}"/>
 			<Button Width="150" Height="40" Content="Отменить"
 					HorizontalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
 					CornerRadius="7" 
-					Command="{Binding CommandCancel}"/>
+					
+					/>
 		</StackPanel>
 	</Grid>
 

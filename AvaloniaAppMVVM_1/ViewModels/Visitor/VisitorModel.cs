@@ -8,8 +8,7 @@ namespace AvaloniaAppMVVM_1.ViewModels.Visitor
 {
     public class VisitorModel
     {
-
-
-
+        public string? FirstName {  get; set; }
+        public string? LastName {  get; set; }
     }
 }
