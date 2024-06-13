@@ -20,17 +20,17 @@ namespace AvaloniaAppMVVM_1.ViewModels
         public UC2ViewModel()
         {
             Companies = new List<Company>(companies());
-            ShowDialog = new Interaction<AddVisitorWindowViewModel, VisitorModel?>();
+            ShowDialogAddVisitor = new Interaction<AddVisitorWindowViewModel, VisitorModel?>();
             AddVisitor = ReactiveCommand.CreateFromTask( async () =>
             {
                 var store = new AddVisitorWindowViewModel();
 
-                var result = await ShowDialog.Handle(store);
+                var result = await ShowDialogAddVisitor.Handle(store);
             });
         }
 
         public ICommand AddVisitor { get; }
-        public Interaction<AddVisitorWindowViewModel, VisitorModel?> ShowDialog { get; }
+        public Interaction<AddVisitorWindowViewModel, VisitorModel?> ShowDialogAddVisitor { get; }
 
 
 

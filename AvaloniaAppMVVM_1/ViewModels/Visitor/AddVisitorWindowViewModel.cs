@@ -19,10 +19,13 @@ namespace AvaloniaAppMVVM_1.ViewModels.Visitor
                 visitorModel = new VisitorModel { FirstName = FirstName, LastName = LastName };
                 return visitorModel;
             });
+
+            CancelCommand = ReactiveCommand.Create(() => { return visitorModel;});
         }
 
         private VisitorModel visitorModel;
         public ReactiveCommand<Unit, VisitorModel?> AddVisitorCommand { get; }
+        public ReactiveCommand<Unit, VisitorModel?> CancelCommand { get; }
 
         private string? _lastName;
         private string? _firstName;

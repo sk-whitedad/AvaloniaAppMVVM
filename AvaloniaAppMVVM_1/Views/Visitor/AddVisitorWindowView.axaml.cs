@@ -14,11 +14,7 @@ namespace AvaloniaAppMVVM_1.Views.Visitor
         {
             InitializeComponent();
             this.WhenActivated(d => d(ViewModel!.AddVisitorCommand.Subscribe(Close)));
+            this.WhenActivated(d => d(ViewModel!.CancelCommand.Subscribe(Close)));
         }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            Debug.WriteLine("Привет");
-        } 
     }
 }
