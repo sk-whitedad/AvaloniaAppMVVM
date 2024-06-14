@@ -1,16 +1,15 @@
-
 <UserControl
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     x:Class="AvaloniaAppMVVM_1.Views.UC1View"
+	
     xmlns:vm="using:AvaloniaAppMVVM_1.ViewModels"
     x:DataType="vm:UC1ViewModel"
     d:DesignHeight="450"
     d:DesignWidth="800"
     mc:Ignorable="d">
-
 	
 	<Grid Classes="Body" ColumnDefinitions="1*, 4*">
 		<Grid Grid.Column="0" RowDefinitions="1*, 2*">
@@ -18,7 +17,7 @@
 				<Button Command="{Binding AddCompany}" Content="Добавить" Classes="btn btn1"/>
 				<Button Command="{Binding EditCompany}" Content="Править" Classes="btn btn1"/>
 				<Button Command="{Binding RemoveCompany}" Content="Удалить" Classes="btn btn1"/>
-				<Button Content="Инфо" Classes="btn btn1"/>
+				<Button Command="{Binding InfoCompany}" Content="Инфо" Classes="btn btn1"/>
 			</StackPanel>
 				
 		</Grid>

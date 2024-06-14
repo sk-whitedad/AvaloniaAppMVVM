@@ -1,0 +1,40 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="450"
+             x:Class="AvaloniaAppMVVM_1.Views.Company.UCAddCompanyView">
+
+	<Grid RowDefinitions="20,*,Auto" Margin="0,0,0,10">
+		<ProgressBar Grid.Row="0" IsIndeterminate="True" />
+
+		<Grid Grid.Row="1"
+			  HorizontalAlignment="Center"
+			  Margin="10,0,10,10"
+			  RowDefinitions="*">
+
+			<StackPanel Margin="10" Grid.Column="1" Orientation="Vertical">
+				<TextBlock HorizontalAlignment="Center" Margin="0,0,0,0" Text="КАРТОЧКА ОРГАНИЗАЦИИ"></TextBlock>
+				<TextBox Width="300" Margin="0,0,0,5" Watermark="Наименование"/>
+				<TextBox Width="300" Margin="0,0,0,5" Watermark="Адрес регистрации"/>
+				<TextBox Width="300" Margin="0,0,0,5" Watermark="Контактный телефон"/>
+				<TextBox Width="300" Margin="0,0,0,5" Watermark="ОГРН"/>
+				<TextBox Width="300" Margin="0,0,0,5" Watermark="ИНН"/>
+			</StackPanel>
+		</Grid>
+
+		<StackPanel Grid.Row="2" HorizontalAlignment="Center" Orientation="Horizontal">
+			<Button Width="150" Height="40" Content="Сохранить"
+					HorizontalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+					CornerRadius="7"
+					Command=""/>
+			<Button Width="150" Height="40" Content="Отменить"
+					HorizontalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+					CornerRadius="7"
+					Command=""
+					/>
+		</StackPanel>
+	</Grid>
+
+
+</UserControl>
