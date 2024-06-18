@@ -1,12 +1,5 @@
 ﻿using ReactiveUI;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
 using System.Reactive;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
 
 namespace AvaloniaAppMVVM_1.ViewModels.Visitor
 {
@@ -20,7 +13,7 @@ namespace AvaloniaAppMVVM_1.ViewModels.Visitor
                 return visitorModel;
             });
 
-            CancelCommand = ReactiveCommand.Create(() => { return visitorModel;});
+            CancelCommand = ReactiveCommand.Create(() => { return visitorModel; });
         }
 
         private VisitorModel visitorModel;

@@ -2,6 +2,31 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="140"
              x:Class="AvaloniaAppMVVM_1.Views.Company.UCRemoveCompanyView">
+	<Grid RowDefinitions="20,*,Auto" Margin="0,0,0,10">
+		<ProgressBar Grid.Row="0" IsIndeterminate="True" />
+
+		<Grid Grid.Row="1"
+			  HorizontalAlignment="Center"
+			  Margin="10,0,10,10"
+			  RowDefinitions="*">
+
+			<StackPanel Margin="10" Grid.Column="1" Orientation="Vertical">
+				<TextBlock HorizontalAlignment="Center" Margin="0,0,0,0" Text="Удалить компанию?"></TextBlock>
+			</StackPanel>
+		</Grid>
+
+		<StackPanel Grid.Row="2" HorizontalAlignment="Center" Orientation="Horizontal">
+			<Button Width="150" Height="40" Content="Удалить"
+					HorizontalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+					CornerRadius="7"
+					Command="{Binding RemoveCompanyCommand}"/>
+			<Button Width="150" Height="40" Content="Отмена"
+					HorizontalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+					CornerRadius="7"
+					Command="{Binding CancelCommand}"/>
+		</StackPanel>
+	</Grid>
+
 </UserControl>

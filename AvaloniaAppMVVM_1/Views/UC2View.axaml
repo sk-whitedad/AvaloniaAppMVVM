@@ -4,7 +4,6 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     x:Class="AvaloniaAppMVVM_1.Views.UC2View"
-
     xmlns:vm="using:AvaloniaAppMVVM_1.ViewModels"
     x:DataType="vm:UC2ViewModel"
     d:DesignHeight="450"

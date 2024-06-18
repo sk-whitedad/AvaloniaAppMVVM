@@ -50,7 +50,7 @@ public partial class UC1View : ReactiveUserControl<UC1ViewModel>
 
     private async Task DoShowRemoveDialogAsync(InteractionContext<RemoveCompanyWindowViewModel, CompanyModel?> interaction)
     {
-        var dialog = new EditCompanyWindowView();
+        var dialog = new RemoveCompanyWindowView();
         dialog.DataContext = interaction.Input;
         var mainWindow = ((IClassicDesktopStyleApplicationLifetime)Application.Current.ApplicationLifetime).MainWindow;
         var result = await dialog.ShowDialog<CompanyModel?>(mainWindow);
@@ -63,7 +63,7 @@ public partial class UC1View : ReactiveUserControl<UC1ViewModel>
 
     private async Task DoShowInfoDialogAsync(InteractionContext<InfoCompanyWindowViewModel, CompanyModel?> interaction)
     {
-        var dialog = new EditCompanyWindowView();
+        var dialog = new InfoCompanyWindowView();
         dialog.DataContext = interaction.Input;
         var mainWindow = ((IClassicDesktopStyleApplicationLifetime)Application.Current.ApplicationLifetime).MainWindow;
         var result = await dialog.ShowDialog<CompanyModel?>(mainWindow);

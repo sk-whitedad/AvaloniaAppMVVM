@@ -13,6 +13,9 @@ namespace AvaloniaAppMVVM_1.Views.Company
         public AddCompanyWindowView()
         {
             InitializeComponent();
+            this.WhenActivated(d => d(ViewModel!.AddCompanyCommand.Subscribe(Close)));
+            this.WhenActivated(d => d(ViewModel!.CancelCommand.Subscribe(Close)));
+
         }
     }
 }

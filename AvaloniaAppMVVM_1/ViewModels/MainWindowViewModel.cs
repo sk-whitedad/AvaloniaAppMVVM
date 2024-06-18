@@ -26,7 +26,7 @@ namespace AvaloniaAppMVVM_1.ViewModels
             contextDB = new ApplicationDbContext();
         }
 
-        public Interaction<AddVisitorWindowViewModel, VisitorModel?> ShowDialog { get; }
+        //public Interaction<AddVisitorWindowViewModel, VisitorModel?> ShowDialog { get; }
 
         private ViewModelBase _CurrentPage;
         public ViewModelBase CurrentPage
@@ -34,7 +34,7 @@ namespace AvaloniaAppMVVM_1.ViewModels
             get { return _CurrentPage; }
             private set { this.RaiseAndSetIfChanged(ref _CurrentPage, value); }
         }
-        public ViewModelBase CompanyList { get; }
+        //public ViewModelBase CompanyList { get; }
 
         private void ButtonComand1()
         {
