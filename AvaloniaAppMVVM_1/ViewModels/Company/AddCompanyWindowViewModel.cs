@@ -9,11 +9,10 @@ namespace AvaloniaAppMVVM_1.ViewModels.Company
 {
     public class AddCompanyWindowViewModel : ViewModelBase
     {
-        private ServisesDB? _servisesDB { get; set; }
         private ObservableCollection<AvaloniaDB.Models.Company>? Companies { get; set; }
         private CompanyModel? companyModel;
 
-        public AddCompanyWindowViewModel(ServisesDB servisesDB, List<AvaloniaDB.Models.Company> companyList)
+        public AddCompanyWindowViewModel(IServisesBD servisesDB, List<AvaloniaDB.Models.Company> companyList)
         {
             if (servisesDB == null)
                 throw new ArgumentNullException("servisesDB");
@@ -21,9 +20,8 @@ namespace AvaloniaAppMVVM_1.ViewModels.Company
             AddCompanyCommand = ReactiveCommand.Create(() =>
             {
                 Companies = new ObservableCollection<AvaloniaDB.Models.Company>(companyList);
-                _servisesDB = servisesDB;
                 companyModel = new CompanyModel { Name = Name, Address = Address, PhoneNumber = PhoneNumber, Description = Description };
-                var response = _servisesDB.companyService.GetCompanies();
+                var response = servisesDB.Service.GetCompanies();
                 if (response.Result.StatusCode == AvaloniaDB.Enums.StatusCode.OK && !String.IsNullOrEmpty(companyModel.Name))
                 {
                     var company = new AvaloniaDB.Models.Company
@@ -33,8 +31,8 @@ namespace AvaloniaAppMVVM_1.ViewModels.Company
                         PhoneNumber = companyModel.PhoneNumber,
                         Description = companyModel.Description
                     };
-                    _servisesDB.companyService.Create(company);
-                    var companies = _servisesDB.companyService.GetCompanies().Result.Data;
+                    servisesDB.Service.Create(company);
+                    var companies = servisesDB.Service.GetCompanies().Result.Data;
                     company = companies[companies.Count - 1];
                     Companies.Add(company);
                 };

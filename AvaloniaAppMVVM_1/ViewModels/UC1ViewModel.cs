@@ -18,20 +18,13 @@ namespace AvaloniaAppMVVM_1.ViewModels
         public int SelectedInd { get; set; }
         public AvaloniaDB.Models.Company SelectedItm { get; set; }
         public ObservableCollection<AvaloniaDB.Models.Company> Companies { get; set; }
-        public ServisesDB servisesDB { get; set; } = new ServisesDB();
 
-        public UC1ViewModel(List<AvaloniaDB.Models.Company> companyList, ICompanyService companyService, IBaseRepository<AvaloniaDB.Models.Company> companyRepository, ApplicationDbContext contextDB)
+        public UC1ViewModel(List<AvaloniaDB.Models.Company> companyList, IServisesBD servisesBD)
         {
             ShowDialogAddCompany = new Interaction<AddCompanyWindowViewModel, CompanyModel?>();
             AddCompany = ReactiveCommand.CreateFromTask(async () =>
             {
-                var servisesDB = new ServisesDB
-                {
-                    contextDB = contextDB,
-                    companyRepository = companyRepository,
-                    companyService = companyService
-                };
-                var store = new AddCompanyWindowViewModel(servisesDB, companyList);
+                var store = new AddCompanyWindowViewModel(servisesBD, companyList);
                 var result = await ShowDialogAddCompany.Handle(store);
 
                 //обновление данных в DataGrid
@@ -39,7 +32,7 @@ namespace AvaloniaAppMVVM_1.ViewModels
                 return;
 
                     Companies.Add(new AvaloniaDB.Models.Company {
-                    Id = Companies.Count + 1,
+                    Id = companyList.Count + 1,
                     Name = result.Name, 
                     Address = result.Address,
                     PhoneNumber = result.PhoneNumber,
@@ -61,12 +54,12 @@ namespace AvaloniaAppMVVM_1.ViewModels
                 {
                     var servisesDB = new ServisesDB
                     {
-                        contextDB = contextDB,
-                        companyRepository = companyRepository,
-                        companyService = companyService
+                        contextDB = servisesBD.contextDB,
+                        companyRepository = servisesBD.Repository,
+                        companyService = servisesBD.Service
                     };
 
-                    var store = new RemoveCompanyWindowViewModel(servisesDB, SelectedItm);
+                    var store = new RemoveCompanyWindowViewModel(servisesBD, SelectedItm);
                     var result = await ShowDialogRemoveCompany.Handle(store);
                     if (result == null) return;
                     if (result.ButtonCklick == "OK")
@@ -93,35 +86,6 @@ namespace AvaloniaAppMVVM_1.ViewModels
         public Interaction<RemoveCompanyWindowViewModel, CompanyModel?> ShowDialogRemoveCompany { get; }
         public ICommand InfoCompany { get; }
         public Interaction<InfoCompanyWindowViewModel, CompanyModel?> ShowDialogInfoCompany { get; }
-
-
-
-
-
-
-        //private async task buttonaddcompany()
-        //{
-        //    var response = companyService.GetCompanies();
-
-        //    if (response.Result.StatusCode == AvaloniaDB.Enums.StatusCode.OK)
-        //    {
-        //        var company = new AvaloniaDB.Models.Company { Name = "Компания 1", PhoneNumber = "+7-888-888-88-81", Address = "" };
-        //        await _companyService.Create(company);
-        //        var companies = _companyService.GetCompanies().Result.Data;
-        //        company = companies[companies.Count - 1];
-        //        Companies.Add(company);
-        //    }
-        //}
-
-        //private async Task ButtonRemoveCompany()
-        //{
-        //    if (SelectedItm != null)
-        //    {
-        //        await _companyService.Delete(SelectedItm.Id);
-        //        Companies.RemoveAt(SelectedInd);
-        //    }
-        //}
-
 
 
 

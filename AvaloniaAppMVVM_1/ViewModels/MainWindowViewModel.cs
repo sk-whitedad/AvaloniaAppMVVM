@@ -15,6 +15,7 @@ namespace AvaloniaAppMVVM_1.ViewModels
         public ICommand Command5 { get; }
 
         public ApplicationDbContext contextDB { get; }
+        public IServisesBD UniServisesDB;
 
         public MainWindowViewModel()
         {
@@ -26,29 +27,28 @@ namespace AvaloniaAppMVVM_1.ViewModels
             contextDB = new ApplicationDbContext();
         }
 
-        //public Interaction<AddVisitorWindowViewModel, VisitorModel?> ShowDialog { get; }
-
         private ViewModelBase _CurrentPage;
         public ViewModelBase CurrentPage
         {
             get { return _CurrentPage; }
             private set { this.RaiseAndSetIfChanged(ref _CurrentPage, value); }
         }
-        //public ViewModelBase CompanyList { get; }
 
         private void ButtonComand1()
         {
-            var _companyRepository = new CompanyRepository(contextDB);
-            var _companyService = new CompanyService(_companyRepository);
-            var response = _companyService.GetCompanies();
+            UniServisesDB = new CompanyServisesBD();
+            UniServisesDB.contextDB = contextDB;
+            UniServisesDB.Repository = new CompanyRepository(UniServisesDB.contextDB);
+            UniServisesDB.Service = new CompanyService(UniServisesDB.Repository);
+            var response = UniServisesDB.Service.GetCompanies();
             var CompanyList = response.Result.Data;
 
             if (response.Result.StatusCode == AvaloniaDB.Enums.StatusCode.OK)
             {
-                CurrentPage = new UC1ViewModel(CompanyList, _companyService, _companyRepository, contextDB);
+                CurrentPage = new UC1ViewModel(CompanyList, UniServisesDB);
                 return;
             }
-            CurrentPage = new UC1ViewModel(null, null, null, null);
+            CurrentPage = new UC1ViewModel(null, null);
         }
         private void ButtonComand2()
         {

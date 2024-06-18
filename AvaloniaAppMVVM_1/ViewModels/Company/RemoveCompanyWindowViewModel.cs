@@ -12,18 +12,15 @@ namespace AvaloniaAppMVVM_1.ViewModels.Company
 {
     public class RemoveCompanyWindowViewModel : ViewModelBase
     {
-        private ServisesDB? _servisesDB { get; set; }
-        //private ObservableCollection<AvaloniaDB.Models.Company>? Companies { get; set; }
         private CompanyModel? companyModel;
 
-        public RemoveCompanyWindowViewModel(ServisesDB servisesDB, AvaloniaDB.Models.Company selectedItm)
+        public RemoveCompanyWindowViewModel(IServisesBD servisesDB, AvaloniaDB.Models.Company selectedItm)
         {
             if (servisesDB == null)
                 throw new ArgumentNullException("servisesDB");
             RemoveCompanyCommand = ReactiveCommand.Create(() =>
             {
-                _servisesDB = servisesDB;
-                servisesDB.companyService.Delete(selectedItm.Id);
+                servisesDB.Service.Delete(selectedItm.Id);
                 companyModel = new CompanyModel
                 {
                     ButtonCklick = "OK"
