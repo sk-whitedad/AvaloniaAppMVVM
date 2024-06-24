@@ -110,12 +110,5 @@ namespace AvaloniaAppMVVM_1.ViewModels
         public Interaction<InfoCompanyWindowViewModel, CompanyModel?> ShowDialogInfoCompany { get; }
 
 
-        private string? _name;
-        public string? Name
-        {
-            get => _name;
-            set => this.RaiseAndSetIfChanged(ref _name, value);
-
-        }
     }
 }
