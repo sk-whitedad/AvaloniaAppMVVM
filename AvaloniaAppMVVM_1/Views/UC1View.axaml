@@ -38,16 +38,12 @@
             ItemsSource="{Binding Companies}">
 			
             <DataGrid.Columns>
-				<DataGridTextColumn Binding="{Binding Id}" Header="№" />
 				<DataGridTextColumn Binding="{Binding Name}" Header="Name" />
 				<DataGridTextColumn Binding="{Binding Address}" Header="Address" />
 				<DataGridTextColumn Binding="{Binding PhoneNumber}" Header="Phone Number" />
 				<DataGridTextColumn Binding="{Binding Description}" Header="Description" />
 			</DataGrid.Columns>
         </DataGrid>
-
-
-
 
     </Grid>
 

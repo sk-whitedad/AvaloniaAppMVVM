@@ -81,6 +81,35 @@ namespace AvaloniaDB.Implementation
             }
         }
 
+        public async Task<IBaseResponse<Company>> EditCompany(Company model)
+        {
+            try
+            {
+                var _model = new Company()
+                {
+                    Id = model.Id,
+                    Name = model.Name,
+                    Address = model.Address,
+                    PhoneNumber = model.PhoneNumber,
+                    Description = model.Description,
+                };
+                await _companyRepository.Update(_model);
+                return new BaseResponse<Company>()
+                {
+                    StatusCode = StatusCode.OK,
+                    Data = _model
+                };
+            }
+            catch (Exception ex)
+            {
+                return new BaseResponse<Company>()
+                {
+                    StatusCode = StatusCode.InternalServerError,
+                    Description = ex.Message
+                };
+            }
+        }
+
         public async Task<IBaseResponse<List<Company>>> GetCompanies()
         {
             try

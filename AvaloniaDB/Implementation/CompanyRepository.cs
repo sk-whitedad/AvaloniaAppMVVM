@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace AvaloniaDB.Implementation
 {
     public class CompanyRepository : IBaseRepository<Company>
@@ -35,8 +36,15 @@ namespace AvaloniaDB.Implementation
 
         public async Task<Company> Update(Company entity)
         {
-            _dbContext.Companies.Update(entity);
-            await _dbContext.SaveChangesAsync();
+            var company = _dbContext.Companies.FirstOrDefault(x => x.Id == entity.Id);
+            if (company != null)
+            {
+                company.Name = entity.Name;
+                company.Address = entity.Address;
+                company.PhoneNumber = entity.PhoneNumber;
+                company.Description = entity.Description;
+                await _dbContext.SaveChangesAsync();
+            }
             return entity;
         }
     }

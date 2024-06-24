@@ -13,5 +13,7 @@ namespace AvaloniaDB.Interfaces
 
         Task<IBaseResponse<List<Company>>> GetCompanies();
 
+        Task<IBaseResponse<Company>> EditCompany(Company model);
+
     }
 }

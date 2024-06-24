@@ -14,24 +14,19 @@
 
 			<StackPanel Margin="10" Grid.Column="1" Orientation="Vertical">
 				<TextBlock HorizontalAlignment="Center" Margin="0,0,0,0" Text="КАРТОЧКА ОРГАНИЗАЦИИ"></TextBlock>
-				<TextBox Width="300" Margin="0,0,0,5" Watermark="Наименование"/>
-				<TextBox Width="300" Margin="0,0,0,5" Watermark="Адрес регистрации"/>
-				<TextBox Width="300" Margin="0,0,0,5" Watermark="Контактный телефон"/>
-				<TextBox Width="300" Margin="0,0,0,5" Watermark="ОГРН"/>
-				<TextBox Width="300" Margin="0,0,0,5" Watermark="ИНН"/>
+				<TextBox Text="{Binding Name}" Width="300" Margin="0,0,0,5" IsReadOnly="True" />
+				<TextBox Text="{Binding Address}" Width="300" Margin="0,0,0,5"  IsReadOnly="True" />
+				<TextBox Text="{Binding PhoneNumber}" Width="300" Margin="0,0,0,5"  IsReadOnly="True" />
+				<TextBox Text="{Binding Description}" Width="300" Height="200" TextWrapping="Wrap" Margin="0,0,0,5"  IsReadOnly="True" />
 			</StackPanel>
 		</Grid>
 
 		<StackPanel Grid.Row="2" HorizontalAlignment="Center" Orientation="Horizontal">
-			<Button Width="150" Height="40" Content="Сохранить"
+			<Button Width="300" Height="40" Content="Закрыть"
 					HorizontalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
 					CornerRadius="7"
-					Command=""/>
-			<Button Width="150" Height="40" Content="Отменить"
-					HorizontalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
-					CornerRadius="7"
-					Command=""
-					/>
+					Command="{Binding CancelCommand}"/>
+			
 		</StackPanel>
 	</Grid>
 

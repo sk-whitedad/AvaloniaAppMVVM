@@ -29,22 +29,32 @@ namespace AvaloniaAppMVVM_1.ViewModels
 
                 //обновление данных в DataGrid
                 if (result == null || result.ButtonCklick == "IsNullName")
-                return;
+                    return;
 
-                    Companies.Add(new AvaloniaDB.Models.Company {
-                    Id = companyList.Count + 1,
-                    Name = result.Name, 
+                Companies.Add(new AvaloniaDB.Models.Company
+                {
+                    Name = result.Name,
                     Address = result.Address,
                     PhoneNumber = result.PhoneNumber,
-                    Description = result.Description                
+                    Description = result.Description
                 });
             });
 
             ShowDialogEditCompany = new Interaction<EditCompanyWindowViewModel, CompanyModel?>();
             EditCompany = ReactiveCommand.CreateFromTask(async () =>
             {
-                var store = new EditCompanyWindowViewModel();
-                var result = await ShowDialogEditCompany.Handle(store);
+                if (SelectedItm != null)
+                {
+                    var store = new EditCompanyWindowViewModel(servisesBD, SelectedItm);
+                    var result = await ShowDialogEditCompany.Handle(store);
+                    if (result.ButtonCklick == "OK")
+                    {
+                        Companies[SelectedInd].Name = result.Name;
+                        Companies[SelectedInd].Address = result.Address;
+                        Companies[SelectedInd].PhoneNumber = result.PhoneNumber;
+                        Companies[SelectedInd].Description = result.Description;
+                    }
+                }
             });
 
             ShowDialogRemoveCompany = new Interaction<RemoveCompanyWindowViewModel, CompanyModel?>();
@@ -70,8 +80,20 @@ namespace AvaloniaAppMVVM_1.ViewModels
             ShowDialogInfoCompany = new Interaction<InfoCompanyWindowViewModel, CompanyModel?>();
             InfoCompany = ReactiveCommand.CreateFromTask(async () =>
             {
-                var store = new InfoCompanyWindowViewModel();
-                var result = await ShowDialogInfoCompany.Handle(store);
+                if (SelectedItm != null)
+                {
+                    var servisesDB = new ServisesDB
+                    {
+                        contextDB = servisesBD.contextDB,
+                        companyRepository = servisesBD.Repository,
+                        companyService = servisesBD.Service
+                    };
+
+                    var store = new InfoCompanyWindowViewModel(servisesBD, SelectedItm);
+                    var result = await ShowDialogInfoCompany.Handle(store);
+
+                }
+
             });
 
             var companies = companyList;
@@ -88,8 +110,12 @@ namespace AvaloniaAppMVVM_1.ViewModels
         public Interaction<InfoCompanyWindowViewModel, CompanyModel?> ShowDialogInfoCompany { get; }
 
 
+        private string? _name;
+        public string? Name
+        {
+            get => _name;
+            set => this.RaiseAndSetIfChanged(ref _name, value);
 
-
-
+        }
     }
 }
